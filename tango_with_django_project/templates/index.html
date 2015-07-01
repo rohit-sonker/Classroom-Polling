@@ -1,0 +1,37 @@
+<DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+	<title>Polling Station</title>
+	<meta charset="utf-8" />
+
+	<meta name="viewport content="width-device-width,initial-scal=1.0">
+</head>
+
+<body class="body">
+	<header class ="mainHead">
+		<h1>Polling Station</h1>
+
+	</header>
+
+	{% if new_questions %}
+    <ul>
+    {% for q in new_questions %}
+        <li><h3>
+		<a href="{%url 'mcqs:question' q.id%}">{{ q.heading}}</a>
+		</h3>
+		<h5>
+		{{q.date}}
+		</h5>
+		{{ q.body|linebreaksbr }}
+		</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No questions have been uploaded ! </p>
+{% endif %}
+
+</body>
+</html>
